@@ -15,4 +15,4 @@ const getAvoById = async (
   response.end(JSON.stringify({ data: entry }))
 }
 
-export default allAvos
+export default getAvoById
