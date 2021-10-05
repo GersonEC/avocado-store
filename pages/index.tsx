@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Hello, world!</h1>
+      <h1>Hello, world! This is Next js application!</h1>
       <h3>Quantity: {avosQuantity}</h3>
       {avocados.map((avo) => (
         <div>
