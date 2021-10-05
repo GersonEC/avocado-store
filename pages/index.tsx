@@ -1,27 +1,29 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import fetch from 'isomorphic-unfetch'
 
-export default function Home() {
-  const [avocados, setAvocados] = useState<TProduct[]>([] as TProduct[])
+export const getServerSideProps = async () => {
+  const response = await fetch(
+    'https://avocado-store-i8pcleaq5-avo-team.vercel.app/api/avo'
+  )
+  const { data: avocados }: TAPIAvoResponse = await response.json()
+  return {
+    props: {
+      avocados,
+    },
+  }
+}
+
+export default function Home({ avocados }: { avocados: TProduct[] }) {
+  //const [avocados, setAvocados] = useState<TProduct[]>([] as TProduct[])
   const [avosQuantity, setAvosQuantity] = useState(0)
-
-  useEffect(() => {
-    window
-      .fetch('/api/avo')
-      .then((response) => response.json())
-      .then(({ data, length }) => {
-        setAvocados(data)
-        setAvosQuantity(length)
-      })
-  }, [])
-
   return (
     <div>
       <h1>Hello, world! This is Next js application!</h1>
       <h3>Quantity: {avosQuantity}</h3>
       {avocados.map((avo) => (
-        <div>
-          <li key={avo.name}>{avo.name}</li>
+        <div key={avo.name}>
+          <li>{avo.name}</li>
           <Link href={`/product/${avo.id}`}>{avo.id}</Link>
         </div>
       ))}
