@@ -1,7 +1,12 @@
-import { IncomingMessage, ServerResponse } from "http"
-
-const allAvos = async request: IncomingMessage, response: ServerResponse) => {
-  response.end(JSON.stringify({ hellos: "world"}))
+import { IncomingMessage, ServerResponse } from 'http'
+import DB from '@database'
+const allAvos = async (request: IncomingMessage, response: ServerResponse) => {
+  const db = new DB()
+  const allEntries = await db.getAll()
+  const length = allEntries.length
+  response.statusCode = 200
+  response.setHeader('Content-type', 'application/json')
+  response.end(JSON.stringify({ data: allEntries, length }))
 }
 
-export { allAvos }
+export default allAvos
