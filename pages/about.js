@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from '../components/Navbar/Navbar'
 
 export default function About() {
   return (
@@ -6,5 +6,5 @@ export default function About() {
       <Navbar />
       <h1>Esta es la pagina de About</h1>
     </div>
-  );
+  )
 }

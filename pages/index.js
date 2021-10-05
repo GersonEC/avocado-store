@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from '../components/Navbar/Navbar'
 
 export default function Home() {
   return (
@@ -6,5 +6,5 @@ export default function Home() {
       <Navbar />
       <h1>Hello, world!</h1>
     </div>
-  );
+  )
 }
