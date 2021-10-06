@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const response = await fetch(
     'https://avocado-store-i8pcleaq5-avo-team.vercel.app/api/avo'
   )
