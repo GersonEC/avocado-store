@@ -1,5 +1,6 @@
 import Layout from '@components/Layout/Layout'
 import { AppProps } from 'next/app'
+import 'styles/index.scss'
 
 //MyApp is useful to inject Providers.
 //Layouts
