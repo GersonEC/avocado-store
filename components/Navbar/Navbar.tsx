@@ -1,9 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link'
+import Avocado from 'styles/SVGIcons/Avocado'
 
 export default function Navbar() {
   return (
     <nav>
       <menu>
+        <Avocado />
         <Link href="/">
           <a>Home</a>
         </Link>
@@ -12,5 +14,5 @@ export default function Navbar() {
         </Link>
       </menu>
     </nav>
-  );
+  )
 }

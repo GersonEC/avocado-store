@@ -5,7 +5,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div className="layout">
       <Navbar />
-      {children}
+      <div className="layout__children">{children}</div>
       <footer>This is the footer</footer>
     </div>
   )
