@@ -24,6 +24,7 @@ export default function Home({ avocados }: { avocados: TProduct[] }) {
       {avocados.map((avo) => (
         <div key={avo.name}>
           <li>{avo.name}</li>
+          <img src={avo.image} title={avo.name} alt={avo.name} />
           <Link href={`/product/${avo.id}`}>{avo.id}</Link>
         </div>
       ))}
