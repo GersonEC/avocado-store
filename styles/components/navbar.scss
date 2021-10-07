@@ -1,0 +1,10 @@
+.navbar {
+  display: flex;
+  border: solid red;
+  background-color: $background-color;
+  justify-content: space-between;
+  max-width: 44rem;
+  width: 44rem;
+  height: 4rem;
+  align-items: center;
+}

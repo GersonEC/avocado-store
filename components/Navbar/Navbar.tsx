@@ -3,9 +3,9 @@ import Avocado from 'styles/SVGIcons/Avocado'
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="navbar">
+      <Avocado />
       <menu>
-        <Avocado />
         <Link href="/">
           <a>Home</a>
         </Link>
