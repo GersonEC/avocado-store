@@ -18,16 +18,17 @@ export default function Home({ avocados }: { avocados: TProduct[] }) {
   //const [avocados, setAvocados] = useState<TProduct[]>([] as TProduct[])
   const [avosQuantity, setAvosQuantity] = useState(0)
   return (
-    <div>
-      <h1>Hello, world! This is Next js application!</h1>
-      <h3>Quantity: {avosQuantity}</h3>
-      {avocados.map((avo) => (
-        <div key={avo.name}>
-          <li>{avo.name}</li>
-          <img src={avo.image} title={avo.name} alt={avo.name} />
-          <Link href={`/product/${avo.id}`}>{avo.id}</Link>
-        </div>
-      ))}
+    <div className="home">
+      <h1>Avocado Store</h1>
+      <div className="home__avoList">
+        {avocados.map((avo) => (
+          <div key={avo.name}>
+            <li>{avo.name}</li>
+            <img src={avo.image} title={avo.name} alt={avo.name} />
+            <Link href={`/product/${avo.id}`}>{avo.id}</Link>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
