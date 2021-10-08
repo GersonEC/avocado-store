@@ -1,6 +1,13 @@
 .home {
   &__title {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 32px;
+    svg {
+      block-size: 3.6rem;
+      inline-size: 3.6rem;
+    }
   }
 
   &__avoList {

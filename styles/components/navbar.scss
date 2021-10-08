@@ -6,4 +6,20 @@
   width: 44rem;
   height: 4rem;
   align-items: center;
+  border-bottom: solid gray;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: $footer-color;
+      cursor: pointer;
+    }
+  }
+
+  menu {
+    display: flex;
+    inline-size: 10rem;
+    gap: 1rem;
+  }
 }

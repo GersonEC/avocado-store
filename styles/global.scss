@@ -14,15 +14,20 @@ h3,
 h4,
 h5 {
   color: $dark-heading-color;
-  font-family: sans-serif;
+  font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 
 p {
-  font-family: sans-serif;
+  font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
   color: $dark-p-color;
 }
 
 a {
   color: $dark-link-color;
-  font-family: sans-serif;
+  font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  &:hover {
+    color: $dark-link-color-hover;
+    transition: 0.3s;
+  }
 }

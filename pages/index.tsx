@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Card from '@components/Card/Card'
+import Avocado from 'styles/SVGIcons/Avocado'
 
 export const getStaticProps = async () => {
   const response = await fetch(
@@ -20,7 +21,13 @@ export default function Home({ avocados }: { avocados: TProduct[] }) {
   const [avosQuantity, setAvosQuantity] = useState(0)
   return (
     <div className="home">
-      <h1 className="home__title">Avocado Store</h1>
+      <div>
+        <h1 className="home__title">
+          Avo
+          <Avocado />
+          Store
+        </h1>
+      </div>
       <div className="home__avoList">
         {avocados.map((avo) => (
           <Card key={avo.id} avo={avo} />
