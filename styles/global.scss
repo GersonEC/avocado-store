@@ -14,8 +14,15 @@ h3,
 h4,
 h5 {
   color: $dark-heading-color;
+  font-family: sans-serif;
+}
+
+p {
+  font-family: sans-serif;
+  color: $dark-p-color;
 }
 
 a {
   color: $dark-link-color;
+  font-family: sans-serif;
 }

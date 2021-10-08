@@ -1,6 +1,11 @@
-.home__avoList {
-  background-color: green;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+.home {
+  &__title {
+    text-align: center;
+  }
+
+  &__avoList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
 }
