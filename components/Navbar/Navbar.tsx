@@ -12,16 +12,11 @@ export default function Navbar() {
             <h4>Avo Store</h4>
           </div>
         </Link>
-
         <menu>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
           <div>
             <Basket />
             <h5>Canasta</h5>
-          </div>
-          
+          </div>        
         </menu>
       </nav>
     </div>

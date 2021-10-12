@@ -33,7 +33,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export default function ProductItem({ product }: { product: TProduct }) {
-  console.log({product});
   return (
     <div className="product">
       <div className="product-preview">
