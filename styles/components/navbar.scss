@@ -1,3 +1,10 @@
+.navbar-wrapper {
+  display: flex;
+  inline-size: 100%;
+  justify-content: center;
+  border-bottom: solid gray;
+}
+
 .navbar {
   display: flex;
   background-color: $background-color;
@@ -6,11 +13,12 @@
   width: 44rem;
   height: 4rem;
   align-items: center;
-  border-bottom: solid gray;
 
   &__logo {
     display: flex;
     align-items: center;
+    padding: 6px 8px 0px 8px;
+    margin-top: -8px;
     &:hover {
       background-color: $footer-color;
       cursor: pointer;
@@ -19,7 +27,24 @@
 
   menu {
     display: flex;
-    inline-size: 10rem;
-    gap: 1rem;
+    justify-content: space-around;
+    inline-size: 15rem;
+    align-items: center;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 8px 0px 8px;
+      margin-top: -8px;
+      svg {
+        block-size: 2.3rem;
+        inline-size: 2.3rem;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: $footer-color;
+      }
+    }
   }
 }
