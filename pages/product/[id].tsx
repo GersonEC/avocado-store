@@ -33,9 +33,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export default function ProductItem({ product }: { product: TProduct }) {
-  /*const {
-    query: { id },
-  } = useRouter()*/
-
-  return <h1>Product: {product.name}</h1>
+  console.log({product});
+  return (
+    <div className="product">
+      <div className="product-preview">
+        <img src={product.image} title={product.name} alt={product.name} />
+        <div className="product-preview__cart">
+          <h3>{product.name}</h3>
+          <p className="product-preview__cart--price">{product.price}</p>
+          <p className="product-preview__cart--sku">SKU:{product.sku}</p>
+        </div>
+      </div>
+      <div className="product-detail">
+        <h3>About this Avocado</h3>
+        <p>{product.attributes.description}</p>
+      </div>
+      <div className="product-attributes">
+        <h3>Attributes</h3>
+        <p><strong>Shape:</strong> {product.attributes.shape}</p>
+        <p><strong>Hardiness:</strong> {product.attributes.hardiness}</p>
+        <p><strong>Taste:</strong> {product.attributes.taste}</p>
+      </div>
+    </div>
+  )
 }
