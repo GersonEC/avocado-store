@@ -1,0 +1,31 @@
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "title title" "image image" "articles articles";
+  gap: 1rem;
+  h1 {
+    grid-area: title;
+    text-align: center;
+  }
+
+  img {
+    grid-area: image;
+  }
+  article {
+    strong {
+      font-size: 1.1rem;
+    }
+    span {
+      position: relative;
+      top: 15px;
+      right: 6px;
+      font-size: 5rem;
+      font-weight: bold;
+      color: rgb(206, 206, 206);
+    }
+    p {
+      line-height: 1.5rem;
+    }
+  }
+}
+

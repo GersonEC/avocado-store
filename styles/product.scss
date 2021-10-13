@@ -4,6 +4,9 @@
   &-preview {
     display: flex;
     background-color: white;
+    border-bottom: 10px outset $footer-color;
+    border-right: 15px outset $footer-color;
+    border-radius: 0.8rem;
     align-items: center;
     padding: 32px;
     &__cart {
