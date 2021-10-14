@@ -2,6 +2,8 @@ import { useRouter } from 'next/dist/client/router'
 import { GetStaticProps } from 'next'
 import Button from '@components/Button/Button'
 import { useState } from 'react'
+import { useAvoCart } from 'contexts/cartAvosContext'
+import { type } from 'os'
 
 export const getStaticPaths = async () => {
   const response = await fetch(
@@ -34,13 +36,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export default function ProductItem({ product }: { product: TProduct }) {
-  const [quantity, setQuantity] = useState(0)
+  const { dispatch } = useAvoCart()
+  const [quantity, setQuantity] = useState(1)
 
   const onQuantityChange = (e: any) => {
-    setQuantity(e.target.value)
+    setQuantity(parseInt(e.target.value))
   }
 
-  console.log(quantity)
+  const onAddToCartClick = () => {
+    debugger
+    dispatch({
+      type: 'add',
+      payload: {
+        cartAvo: product,
+        quantity,
+      },
+    })
+    setQuantity(1)
+  }
+
   return (
     <div className="product">
       <div className="product-preview">
@@ -58,7 +72,7 @@ export default function ProductItem({ product }: { product: TProduct }) {
               value={quantity}
               onChange={onQuantityChange}
             />
-            <Button label={'Add to Cart'} onClick={() => {}} />
+            <Button label={'Add to Cart'} onClick={onAddToCartClick} />
           </div>
         </div>
       </div>

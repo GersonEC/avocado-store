@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 //import fetch from 'isomorphic-unfetch'
 import Card from '@components/Card/Card'
@@ -17,6 +17,7 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ avocados }: { avocados: TProduct[] }) {
+  const cartAvos = [] as TProduct[]
   return (
     <div className="home">
       <div>

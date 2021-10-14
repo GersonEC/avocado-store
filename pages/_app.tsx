@@ -1,21 +1,24 @@
 import Layout from '@components/Layout/Layout'
 import { AppProps } from 'next/app'
-import NProgress from 'nprogress';
+import NProgress from 'nprogress'
 import Router from 'next/router'
 import 'styles/index.scss'
+import { CartProvider } from 'contexts/cartAvosContext'
 
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
+Router.events.on('routeChangeStart', () => NProgress.start())
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
 //MyApp is useful to inject Providers.
 //Layouts
 //Additional props.
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CartProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CartProvider>
   )
 }
 
