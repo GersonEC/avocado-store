@@ -19,7 +19,6 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  debugger
   const id = params?.id as string
   const response = await fetch(
     `https://avocado-store-i8pcleaq5-avo-team.vercel.app/api/avo/${id}`
