@@ -1,5 +1,7 @@
 import { useRouter } from 'next/dist/client/router'
 import { GetStaticProps } from 'next'
+import Button from '@components/Button/Button'
+import { useState } from 'react'
 
 export const getStaticPaths = async () => {
   const response = await fetch(
@@ -32,6 +34,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export default function ProductItem({ product }: { product: TProduct }) {
+  const [quantity, setQuantity] = useState(0)
+
+  const onQuantityChange = (e: any) => {
+    setQuantity(e.target.value)
+  }
+
+  console.log(quantity)
   return (
     <div className="product">
       <div className="product-preview">
@@ -40,6 +49,17 @@ export default function ProductItem({ product }: { product: TProduct }) {
           <h3>{product.name}</h3>
           <p className="product-preview__cart--price">{product.price}</p>
           <p className="product-preview__cart--sku">SKU:{product.sku}</p>
+          <div style={{ display: 'flex' }}>
+            <input
+              style={{ padding: '0.2rem 0.8rem', inlineSize: '5rem' }}
+              type="number"
+              min="1"
+              placeholder="Quantity"
+              value={quantity}
+              onChange={onQuantityChange}
+            />
+            <Button label={'Add to Cart'} onClick={() => {}} />
+          </div>
         </div>
       </div>
       <div className="product-detail">
@@ -48,9 +68,15 @@ export default function ProductItem({ product }: { product: TProduct }) {
       </div>
       <div className="product-attributes">
         <h3>Attributes</h3>
-        <p><strong>Shape:</strong> {product.attributes.shape}</p>
-        <p><strong>Hardiness:</strong> {product.attributes.hardiness}</p>
-        <p><strong>Taste:</strong> {product.attributes.taste}</p>
+        <p>
+          <strong>Shape:</strong> {product.attributes.shape}
+        </p>
+        <p>
+          <strong>Hardiness:</strong> {product.attributes.hardiness}
+        </p>
+        <p>
+          <strong>Taste:</strong> {product.attributes.taste}
+        </p>
       </div>
     </div>
   )

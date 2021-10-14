@@ -1,0 +1,16 @@
+.button {
+  width: fit-content;
+  button {
+    padding: 6px 16px;
+    background-color: $background-color;
+    &:hover {
+      cursor: pointer;
+      background-color: #395266;
+    }
+    p {
+      color: white;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+}

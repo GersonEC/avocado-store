@@ -13,7 +13,6 @@ export default function Navbar() {
           </div>
         </Link>
         <menu>
-          <Link href="/about">About</Link>
           <div>
             <Basket />
             <h5>Canasta</h5>
