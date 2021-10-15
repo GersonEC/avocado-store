@@ -61,7 +61,7 @@ export default function ProductItem({ product }: { product: TProduct }) {
         <img src={product.image} title={product.name} alt={product.name} />
         <div className="product-preview__cart">
           <h3>{product.name}</h3>
-          <p className="product-preview__cart--price">{product.price}</p>
+          <p className="product-preview__cart--price">{product.price} €</p>
           <p className="product-preview__cart--sku">SKU:{product.sku}</p>
           <div style={{ display: 'flex' }}>
             <input
