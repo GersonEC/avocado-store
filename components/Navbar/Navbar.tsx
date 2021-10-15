@@ -20,10 +20,12 @@ export default function Navbar() {
             </div>
           </Link>
           <menu>
-            <div className="navbar__cart">
-              <Basket />
-              <span className="navbar__cart-quantity">{cartQuantity}</span>
-            </div>
+            <Link href="/cart">
+              <div className="navbar__cart">
+                <Basket />
+                <span className="navbar__cart-quantity">{cartQuantity}</span>
+              </div>
+            </Link>
           </menu>
         </nav>
       </div>
