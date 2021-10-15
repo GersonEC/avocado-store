@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import Button from '@components/Button/Button'
 import { useState } from 'react'
 import { useAvoCart } from 'contexts/cartAvosContext'
-import { type } from 'os'
+import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
 
 export const getStaticPaths = async () => {
   const response = await fetch(
@@ -38,21 +38,38 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function ProductItem({ product }: { product: TProduct }) {
   const { dispatch } = useAvoCart()
   const [quantity, setQuantity] = useState(1)
+  const [loading, setLoading] = useState(false)
+  const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null)
+  const [error, setError] = useState<boolean | null>(null)
 
   const onQuantityChange = (e: any) => {
     setQuantity(parseInt(e.target.value))
   }
 
   const onAddToCartClick = () => {
-    debugger
-    dispatch({
-      type: 'add',
-      payload: {
-        cartAvo: product,
-        quantity,
-      },
-    })
-    setQuantity(1)
+    setLoading(true)
+
+    setTimeout(() => {
+      try {
+        dispatch({
+          type: 'add',
+          payload: {
+            cartAvo: product,
+            quantity,
+          },
+        })
+        setQuantity(1)
+        setLoading(false)
+        setFeedbackMessage('Product added correctly')
+        setError(false)
+      } catch (error) {
+        setFeedbackMessage(`${error}`)
+        setLoading(false)
+        setError(true)
+      }
+    }, 2000)
+    setFeedbackMessage(null)
+    setError(null)
   }
 
   return (
@@ -73,13 +90,27 @@ export default function ProductItem({ product }: { product: TProduct }) {
               onChange={onQuantityChange}
             />
             <Button label={'Add to Cart'} onClick={onAddToCartClick} />
+            <span className="product-preview__cart--loading">
+              {loading ? 'Adding...' : null}
+            </span>
           </div>
+          {error === true && (
+            <span className="product-preview__cart--feedback error">
+              {feedbackMessage} <AiFillCloseCircle />
+            </span>
+          )}
+          {error === false && (
+            <span className="product-preview__cart--feedback success">
+              {feedbackMessage} <AiFillCheckCircle />
+            </span>
+          )}
         </div>
       </div>
       <div className="product-detail">
         <h3>About this Avocado</h3>
         <p>{product.attributes.description}</p>
       </div>
+
       <div className="product-attributes">
         <h3>Attributes</h3>
         <p>
