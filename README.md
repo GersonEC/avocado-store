@@ -9,3 +9,4 @@ Impement Add to cart :
 -vado nella pagina canasta e vedo la mia lista di avo del carrello.
 Implement Themes
 -responsiveness
+-Theming

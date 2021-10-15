@@ -1,0 +1,22 @@
+.cart {
+  margin-top: 32px;
+  &__row {
+    display: flex;
+    border-bottom: 1px solid gray;
+    padding: 16px;
+    gap: 3rem;
+    margin-bottom: 24px;
+    img {
+      border: 1px solid white;
+      border-radius: 1rem;
+    }
+  }
+
+  &__total {
+    border: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 32px;
+  }
+}
