@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-interface CartState {
+export interface CartState {
   cartAvo: TProduct
   quantity: number
 }

@@ -1,5 +1,13 @@
 import Button from '@components/Button/Button'
-import { useAvoCart } from 'contexts/cartAvosContext'
+import { CartState, useAvoCart } from 'contexts/cartAvosContext'
+
+const calcTotalPrice = (items: CartState[]): number => {
+  let totalPrice = 0
+  items.forEach((item) => {
+    totalPrice += item.quantity * item.cartAvo.price
+  })
+  return parseFloat(totalPrice.toFixed(2))
+}
 
 export default function Cart() {
   const avosCart = useAvoCart()
@@ -7,6 +15,7 @@ export default function Cart() {
   const totalQuantity = avosCart.state
     .map((el) => el.quantity)
     .reduce((prevValue, currValue) => prevValue + currValue, 0)
+  const totalPrice = calcTotalPrice(avosCart.state)
 
   return (
     <div className="cart">
@@ -27,7 +36,7 @@ export default function Cart() {
         </div>
       ))}
       <div className="cart__total">
-        <h3>Totale: {totalQuantity}</h3>
+        <h3>Total: {totalPrice} €</h3>
         <Button onClick={() => {}} label={'Checkout'} />
       </div>
     </div>
