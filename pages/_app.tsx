@@ -4,21 +4,31 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 import 'styles/index.scss'
 import { CartProvider } from 'contexts/cartAvosContext'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(
+  'pk_test_51JeyjHGx8A0zhUcZE62tvNKsK2Ycir5i6cErCK9bWiUGUqxHoMir0X7Hx18sONfp4F9QZWjxPjC7hxOYMH8Oud5q00Jzbmnh63'
+)
 
 //MyApp is useful to inject Providers.
 //Layouts
 //Additional props.
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CartProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </CartProvider>
+    <Elements stripe={stripePromise}>
+      <CartProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CartProvider>
+    </Elements>
   )
 }
 
