@@ -1,4 +1,5 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import axios from 'axios'
 
 export const CheckoutForm = () => {
   const stripe = useStripe()
@@ -28,7 +29,13 @@ export const CheckoutForm = () => {
     if (error) {
       console.log('[error]', error)
     } else {
-      console.log('[PaymentMethod]', paymentMethod)
+      const { id } = paymentMethod!
+      const { data } = await axios.post('http://localhost:3001/api/checkout', {
+        id,
+        amount: 2.5 * 100,
+      })
+      console.log(data)
+      elements.getElement(CardElement)?.clear()
     }
   }
 
