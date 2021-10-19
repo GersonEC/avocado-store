@@ -1,5 +1,6 @@
 import Button from '@components/Button/Button'
 import { CartState, useAvoCart } from 'contexts/cartAvosContext'
+import { useRouter } from 'next/router'
 
 const calcTotalPrice = (items: CartState[]): number => {
   let totalPrice = 0
@@ -10,6 +11,7 @@ const calcTotalPrice = (items: CartState[]): number => {
 }
 
 export default function Cart() {
+  const router = useRouter()
   const avosCart = useAvoCart()
   const avos = avosCart.state
   const totalQuantity = avosCart.state
@@ -37,7 +39,7 @@ export default function Cart() {
       ))}
       <div className="cart__total">
         <h3>Total: {totalPrice} €</h3>
-        <Button onClick={() => {}} label={'Checkout'} />
+        <Button onClick={() => router.push('/checkout')} label={'Checkout'} />
       </div>
     </div>
   )
