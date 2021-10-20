@@ -1,6 +1,8 @@
 import Button from '@components/Button/Button'
+import { CheckoutForm } from '@components/CheckoutForm/CheckoutForm'
 import { CartState, useAvoCart } from 'contexts/cartAvosContext'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 const calcTotalPrice = (items: CartState[]): number => {
   let totalPrice = 0
@@ -12,6 +14,7 @@ const calcTotalPrice = (items: CartState[]): number => {
 
 export default function Cart() {
   const router = useRouter()
+  const [isCheckoutVisible, setIsCheckoutVisible] = useState(false)
   const avosCart = useAvoCart()
   const avos = avosCart.state
   const totalQuantity = avosCart.state
@@ -39,8 +42,12 @@ export default function Cart() {
       ))}
       <div className="cart__total">
         <h3>Total: {totalPrice} €</h3>
-        <Button onClick={() => router.push('/checkout')} label={'Checkout'} />
+        <Button
+          onClick={() => setIsCheckoutVisible(!isCheckoutVisible)}
+          label={'Checkout'}
+        />
       </div>
+      {isCheckoutVisible ? <CheckoutForm amount={totalPrice} /> : null}
     </div>
   )
 }

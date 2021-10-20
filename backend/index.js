@@ -14,8 +14,9 @@ app.use(express.json())
 app.post('/api/checkout', async (req, res) => {
   try {
     const { id, amount } = req.body
+    const amountFixed = Math.round(amount)
     const payment = await stripe.paymentIntents.create({
-      amount,
+      amount: amountFixed,
       currency: 'EUR',
       description: 'Avocado',
       payment_method: id,
