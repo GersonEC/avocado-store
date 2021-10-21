@@ -4,9 +4,7 @@ const cors = require('cors')
 
 const app = express()
 
-const stripe = new Stripe(
-  'sk_test_51JeyjHGx8A0zhUcZORTnnxHFOjRCmWPR7AdCwHHtLCwuV0VNGO6XqAPVjampyyZiqSNH3NOa3vfeQad6gfzQzt5700IIlDIOXY'
-)
+const stripe = new Stripe('')
 
 app.use(cors({ origin: 'http://localhost:3000' }))
 app.use(express.json())
