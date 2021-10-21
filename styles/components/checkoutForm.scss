@@ -1,7 +1,24 @@
 .checkout {
-  border: solid red;
+  border: solid black;
   border-radius: 16px;
   background-color: white;
   padding: 32px;
   margin: 32px;
+  inline-size: 22rem;
+  min-width: 22rem;
+  label {
+    color: rgb(41, 40, 40);
+    font-family: Lato, Helvetica Neue, Arial, Helvetica, sans-serif;
+  }
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  button {
+    margin-top: 16px;
+    inline-size: 8rem;
+  }
 }

@@ -1,5 +1,7 @@
+import Button from '@components/Button/Button'
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 interface CheckoutFormProps {
   amount: number
@@ -8,6 +10,7 @@ interface CheckoutFormProps {
 export const CheckoutForm = ({ amount }: CheckoutFormProps) => {
   const stripe = useStripe()
   const elements = useElements()
+  const router = useRouter()
 
   const handleSubmit = async (event: any) => {
     // Block native form submission.
@@ -39,12 +42,27 @@ export const CheckoutForm = ({ amount }: CheckoutFormProps) => {
       })
       console.log(data)
       elements.getElement(CardElement)?.clear()
+      router.push('/thanks')
     }
   }
 
   return (
     <div className="checkout">
       <form onSubmit={handleSubmit}>
+        <div className="checkout__inputs">
+          <div>
+            <label style={{ display: 'block' }} htmlFor="name">
+              Name
+            </label>
+            <input type="text" id="name" />
+          </div>
+          <div>
+            <label style={{ display: 'block' }} htmlFor="surname">
+              Surname
+            </label>
+            <input type="text" id="surname" />
+          </div>
+        </div>
         <CardElement />
         <button type="submit" disabled={!stripe}>
           Pay

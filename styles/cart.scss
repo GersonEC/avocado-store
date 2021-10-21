@@ -1,5 +1,6 @@
 .cart {
   margin-top: 32px;
+
   &__row {
     display: flex;
     border-bottom: 1px solid gray;
@@ -18,5 +19,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 32px;
+  }
+
+  &__checkout {
+    display: flex;
+    justify-content: center;
   }
 }

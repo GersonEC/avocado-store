@@ -47,7 +47,9 @@ export default function Cart() {
           label={'Checkout'}
         />
       </div>
-      {isCheckoutVisible ? <CheckoutForm amount={totalPrice} /> : null}
+      <div className="cart__checkout">
+        {isCheckoutVisible ? <CheckoutForm amount={totalPrice} /> : null}
+      </div>
     </div>
   )
 }
